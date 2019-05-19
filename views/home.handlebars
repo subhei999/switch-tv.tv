@@ -1,0 +1,23 @@
+<h1>open cv server</h1>
+<script>
+    function Test()
+    {
+        var req = new XMLHttpRequest();
+        req.open("GET",'http://localhost:8080/cvReadPlayersRemaining?imgTemplate=templ.png&img=sample/1.jpg',true);
+        req.send(null);
+
+        req.onreadystatechange = function() {//async
+            if(req.readyState == 4 && req.status == 200) 
+            {
+                var data = JSON.parse(req.responseText);
+                document.getElementById("test-result").value = data;
+                console.log(data);
+
+            }
+        }
+    }
+</script>
+<img src="static\1.jpg" style="width:75%">
+<br>
+<button type="button" onclick="Test()">Test OCR</button>
+<input id="test-result" style='width:50px' type="text">

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenCV.js</title>
+</head>
+<script>
+    function Test()
+    {
+        var req = new XMLHttpRequest();
+        req.open("GET",'http://localhost:8080/cvTemplateMatch?imgTemplate=templ.png&img=1.jpg',true);
+        req.send(null);
+
+        req.onreadystatechange = function() {//async
+            if(req.readyState == 4 && req.status == 200) 
+            {
+                var data = JSON.parse(req.responseText);
+                console.log(data);
+            }
+        }
+    }
+</script>
+<body>
+    <canvas id="canvasOutput" ></canvas>  
+</body>
+</html>
